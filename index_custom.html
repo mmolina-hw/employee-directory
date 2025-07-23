@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Directorio de Empleados</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+      background-color: #fff;
+      color: #111;
+    }
+    header {
+      background-color: #ff3c1f;
+      padding: 1em;
+      text-align: center;
+      color: white;
+      font-size: 2em;
+      font-weight: bold;
+    }
+    .search-container {
+      padding: 1em;
+      text-align: center;
+    }
+    input {
+      width: 60%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 1em;
+    }
+    .dept-btn {
+      background: #111;
+      color: white;
+      border: none;
+      margin: 6px;
+      padding: 10px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: background 0.3s;
+    }
+    .dept-btn:hover {
+      background: #ff3c1f;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 2em;
+    }
+    .card {
+      background-color: #f8f8f8;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .hidden {
+      display: none;
+    }
+    .email {
+      margin-top: 10px;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>lab. / Directorio</header>
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Buscar por nombre...">
+  </div>
+  <div class="button-container">
+    <button class="dept-btn" onclick="filterByDepartment('Finance')">Finance</button>
+<button class="dept-btn" onclick="filterByDepartment('HR')">HR</button>
+<button class="dept-btn" onclick="filterByDepartment('IT')">IT</button>
+<button class="dept-btn" onclick="filterByDepartment('Legal')">Legal</button>
+<button class="dept-btn" onclick="filterByDepartment('Operations')">Operations</button>
+
+  </div>
+  <div class="grid" id="employeeGrid">
+
+    <div class="card" data-department="IT" data-name="oscar sandoval pia">
+      <h3>Oscar Sandoval Pia</h3>
+      <p>Analyst - IT</p>
+      <p class="email hidden">jonesjavier@harris.org</p>
+    </div>
+    
+    <div class="card" data-department="HR" data-name="janis armando de">
+      <h3>Janis Armando De</h3>
+      <p>Manager - HR</p>
+      <p class="email hidden">josborne@gmail.com</p>
+    </div>
+    
+    <div class="card" data-department="Operations" data-name="carlos alvarado roberto">
+      <h3>Carlos Alvarado Roberto</h3>
+      <p>Technician - Operations</p>
+      <p class="email hidden">wilkersonantonio@yahoo.com</p>
+    </div>
+    
+    <div class="card" data-department="Finance" data-name="jose martinez roberto">
+      <h3>Jose Martinez Roberto</h3>
+      <p>Coordinator - Finance</p>
+      <p class="email hidden">matthew90@simpson.org</p>
+    </div>
+    
+    <div class="card" data-department="Legal" data-name="haydee perdomo lissete">
+      <h3>Haydee Perdomo Lissete</h3>
+      <p>Support - Legal</p>
+      <p class="email hidden">fjohnson@yahoo.com</p>
+    </div>
+    
+    <div class="card" data-department="IT" data-name="andrea sariah oliva">
+      <h3>Andrea Sariah Oliva</h3>
+      <p>Analyst - IT</p>
+      <p class="email hidden">latoyaroberts@faulkner-lewis.net</p>
+    </div>
+    
+    <div class="card" data-department="HR" data-name="waleska galvez lemus">
+      <h3>Waleska Galvez Lemus</h3>
+      <p>Manager - HR</p>
+      <p class="email hidden">goodwinclifford@gmail.com</p>
+    </div>
+    
+    <div class="card" data-department="Operations" data-name="debora alejandra navichoc">
+      <h3>Debora Alejandra Navichoc</h3>
+      <p>Technician - Operations</p>
+      <p class="email hidden">kathleen76@rangel.com</p>
+    </div>
+    
+    <div class="card" data-department="Finance" data-name="andrea martinez roberto">
+      <h3>Andrea Martinez Roberto</h3>
+      <p>Coordinator - Finance</p>
+      <p class="email hidden">kimberly09@morgan.org</p>
+    </div>
+    
+    <div class="card" data-department="Legal" data-name="ana porras paz">
+      <h3>Ana Porras Paz</h3>
+      <p>Support - Legal</p>
+      <p class="email hidden">ann92@lowe-smith.info</p>
+    </div>
+    
+    <div class="card" data-department="IT" data-name="glenda luarca ramos">
+      <h3>Glenda Luarca Ramos</h3>
+      <p>Analyst - IT</p>
+      <p class="email hidden">xnewman@gmail.com</p>
+    </div>
+    
+    <div class="card" data-department="HR" data-name="edin beatriz muñoz">
+      <h3>Edin Beatriz Muñoz</h3>
+      <p>Manager - HR</p>
+      <p class="email hidden">ncolon@hotmail.com</p>
+    </div>
+    
+    <div class="card" data-department="Operations" data-name="maria y martinez">
+      <h3>Maria y Martinez</h3>
+      <p>Technician - Operations</p>
+      <p class="email hidden">hardingdiana@atkinson.org</p>
+    </div>
+    
+    <div class="card" data-department="Finance" data-name="edgar carolina de">
+      <h3>Edgar Carolina De</h3>
+      <p>Coordinator - Finance</p>
+      <p class="email hidden">lisaalvarez@gmail.com</p>
+    </div>
+    
+    <div class="card" data-department="Legal" data-name="jania leon moreno">
+      <h3>Jania Leon Moreno</h3>
+      <p>Support - Legal</p>
+      <p class="email hidden">daniellerodriguez@hotmail.com</p>
+    </div>
+    
+    <div class="card" data-department="IT" data-name="christian castro lemus">
+      <h3>Christian Castro Lemus</h3>
+      <p>Analyst - IT</p>
+      <p class="email hidden">stephanieaguilar@zimmerman.com</p>
+    </div>
+    
+    <div class="card" data-department="HR" data-name="diego alfredo chali">
+      <h3>Diego Alfredo Chali</h3>
+      <p>Manager - HR</p>
+      <p class="email hidden">gerald57@yahoo.com</p>
+    </div>
+    
+    <div class="card" data-department="Operations" data-name="francisco carlos sandoval">
+      <h3>Francisco Carlos Sandoval</h3>
+      <p>Technician - Operations</p>
+      <p class="email hidden">hernandezjason@thompson.com</p>
+    </div>
+    
+    <div class="card" data-department="Finance" data-name="luis leon leon">
+      <h3>Luis Leon Leon</h3>
+      <p>Coordinator - Finance</p>
+      <p class="email hidden">mary23@hotmail.com</p>
+    </div>
+    
+    <div class="card" data-department="Legal" data-name="luis alfredo david">
+      <h3>Luis Alfredo David</h3>
+      <p>Support - Legal</p>
+      <p class="email hidden">eavila@khan.com</p>
+    </div>
+    
+    <div class="card" data-department="IT" data-name="mario jose sofia">
+      <h3>Mario Jose Sofia</h3>
+      <p>Analyst - IT</p>
+      <p class="email hidden">boyerfrancisco@wilson.info</p>
+    </div>
+    
+    <div class="card" data-department="HR" data-name="marvin paz muñoz">
+      <h3>Marvin Paz Muñoz</h3>
+      <p>Manager - HR</p>
+      <p class="email hidden">elizabeth57@yahoo.com</p>
+    </div>
+    
+    <div class="card" data-department="Operations" data-name="nancy paz flores">
+      <h3>Nancy Paz Flores</h3>
+      <p>Technician - Operations</p>
+      <p class="email hidden">amandaramirez@gibson.biz</p>
+    </div>
+    
+    <div class="card" data-department="Finance" data-name="walter castillo oropin">
+      <h3>Walter Castillo Oropin</h3>
+      <p>Coordinator - Finance</p>
+      <p class="email hidden">khoward@yahoo.com</p>
+    </div>
+    
+    <div class="card" data-department="Legal" data-name="melida ramos portales">
+      <h3>Melida Ramos Portales</h3>
+      <p>Support - Legal</p>
+      <p class="email hidden">ramosjohnny@gmail.com</p>
+    </div>
+    
+    <div class="card" data-department="IT" data-name="gabriel esteban ayala">
+      <h3>Gabriel Esteban Ayala</h3>
+      <p>Analyst - IT</p>
+      <p class="email hidden">rodriguezpatricia@gray-cochran.com</p>
+    </div>
+    
+    <div class="card" data-department="HR" data-name="juan herrera godoy">
+      <h3>Juan Herrera Godoy</h3>
+      <p>Manager - HR</p>
+      <p class="email hidden">hansonjudy@fields.net</p>
+    </div>
+    
+    <div class="card" data-department="Operations" data-name="carlos montenegro castro">
+      <h3>Carlos Montenegro Castro</h3>
+      <p>Technician - Operations</p>
+      <p class="email hidden">williamsjoel@frazier.com</p>
+    </div>
+    
+    <div class="card" data-department="Finance" data-name="hector oliva carrillo">
+      <h3>Hector Oliva Carrillo</h3>
+      <p>Coordinator - Finance</p>
+      <p class="email hidden">schwartzrobin@hotmail.com</p>
+    </div>
+    
+    <div class="card" data-department="Legal" data-name="luis portales armando">
+      <h3>Luis Portales Armando</h3>
+      <p>Support - Legal</p>
+      <p class="email hidden">lisa14@smith.com</p>
+    </div>
+    
+  </div>
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const cards = document.querySelectorAll(".card");
+
+    searchInput.addEventListener("input", function () {
+      const query = this.value.toLowerCase();
+      cards.forEach(card => {
+        const name = card.getAttribute("data-name");
+        const email = card.querySelector(".email");
+        if (name.includes(query)) {
+          card.classList.remove("hidden");
+          email.classList.remove("hidden");
+        } else {
+          card.classList.add("hidden");
+          email.classList.add("hidden");
+        }
+      });
+    });
+
+    function filterByDepartment(dept) {
+      searchInput.value = "";
+      cards.forEach(card => {
+        const cardDept = card.getAttribute("data-department");
+        const email = card.querySelector(".email");
+        if (cardDept === dept) {
+          card.classList.remove("hidden");
+          email.classList.add("hidden");
+        } else {
+          card.classList.add("hidden");
+        }
+      });
+    }
+  </script>
+</body>
+</html>
